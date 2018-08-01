@@ -36,7 +36,7 @@
 <body>
 <div class="container">
     <h1>Billing</h1>
-    <div class="panel panel-danger">
+    <div class="panel panel-info">
         <div class="panel-heading">Billing</div>
         <div class="panel-body">
             Billing
