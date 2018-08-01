@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/")
 public class BillingController {
-    private static final Logger logger = LoggerFactory.getLogger(BillingController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BillingController.class);
 
     @RequestMapping(value = "/billing", method = RequestMethod.POST)
     public String billingPost(Model model) {
-        logger.info("method post controller /billing");
+        LOGGER.info("method post controller /billing");
         return "billing";
     }
 
     @RequestMapping(value = "/billing", method = RequestMethod.GET)
     public String billingGet(Model model) {
-        logger.info("method get controller /billing");
+        LOGGER.info("method get controller /billing");
         return "billing";
     }
 }

@@ -14,16 +14,16 @@ import static org.junit.Assert.assertEquals;
 
 public class AccountCacheDaoTest {
     private static final int MAX_CAPACITY = 10;
-    private static final Logger logger = LoggerFactory.getLogger(AccountCacheDaoTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AccountCacheDaoTest.class);
 
-    CacheLoader<Integer, Account> loaderAccount = new CacheLoader<Integer, Account>() {
+    private CacheLoader<Integer, Account> loaderAccount = new CacheLoader<Integer, Account>() {
         @Override
         public Account load(Integer key) {
-            logger.info("loaded " + key);
+            LOGGER.info("loaded " + key);
             return new Account();
         }
     };
-    LoadingCache<Integer, Account> cacheAccountBuilder = CacheBuilder.newBuilder().maximumSize(MAX_CAPACITY).build(loaderAccount);
+    private LoadingCache<Integer, Account> cacheAccountBuilder = CacheBuilder.newBuilder().maximumSize(MAX_CAPACITY).build(loaderAccount);
 
     @Test
     public void testGetCacheBuilderForAccount() throws ExecutionException {
