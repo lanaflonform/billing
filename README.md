@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/we-are-comrades/billing.svg?branch=master)](https://travis-ci.org/we-are-comrades/billing)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e4262d0680044f208141fdced3d38f59)](https://www.codacy.com/project/vrnsky/billing/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=we-are-comrades/billing&amp;utm_campaign=Badge_Grade_Dashboard)
+
 # Биллинговая система
 
 Кратко разберем, что же такое биллинговая система, какие ее задачи и основные понятия.
