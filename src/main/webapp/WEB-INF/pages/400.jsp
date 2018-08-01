@@ -17,7 +17,7 @@
     <meta property="og:description" content="Billing System">
     <meta property="og:image" content="http://vakhnenko.com/java.png">
 
-    <title>Billing</title>
+    <title>400</title>
 
     <!-- Bootstrap core CSS -->
     <spring:url value="/resources/css/bootstrap.css" var="bootstrap"/>
@@ -35,11 +35,11 @@
 
 <body>
 <div class="container">
-    <h1>Billing</h1>
-    <div class="panel panel-info">
-        <div class="panel-heading">Billing</div>
+    <h1>400</h1>
+    <div class="panel panel-danger">
+        <div class="panel-heading">Error</div>
         <div class="panel-body">
-            Billing
+            Bad Request
             <br>
             <br>
             <form:form method="post" action="/billing">
