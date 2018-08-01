@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/we-are-comrades/billing.svg?branch=master)](https://travis-ci.org/we-are-comrades/billing)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e4262d0680044f208141fdced3d38f59)](https://www.codacy.com/project/vrnsky/billing/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=we-are-comrades/billing&amp;utm_campaign=Badge_Grade_Dashboard)
+[![Build Status](https://travis-ci.org/we-are-comrades/billing.svg?branch=master)](https://travis-ci.org/we-are-comrades/billing)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e4262d0680044f208141fdced3d38f59)](https://www.codacy.com/project/vrnsky/billing/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=we-are-comrades/billing&amp;utm_campaign=Badge_Grade_Dashboard) [![codecov](https://codecov.io/gh/we-are-comrades/billing/branch/master/graph/badge.svg)](https://codecov.io/gh/we-are-comrades/billing)
 
 # Биллинговая система
 
