@@ -1,6 +1,7 @@
 package com.vectree.billing.config;
 
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -19,6 +20,7 @@ public class AppInit implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(WebConfig.class);
+        servletContext.addListener(new ContextLoaderListener(ctx));
         ctx.setServletContext(servletContext);
 
         ServletRegistration.Dynamic servlet = servletContext.addServlet("billing", new DispatcherServlet(ctx));
