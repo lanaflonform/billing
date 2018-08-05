@@ -6,27 +6,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>400</title>
+    <title>Billing</title>
     <%@ include file="include-meta.jsp" %>
     <%@ include file="include-bootstrap.jsp" %>
 </head>
 
 <body>
 <div class="container">
-    <h1><spring:message code="error.message.400.header"/></h1>
-    <div class="panel panel-danger">
+    <form:form method="get" action="/login">
+        <jsp:include page="header.jsp"/>
+    </form:form>
+
+    <div class="panel panel-info">
         <div class="panel-heading">
-            <spring:message code="error.message.400.caption"/>
+            <spring:message code="billing.header"/>
         </div>
         <div class="panel-body">
-            <spring:message code="error.message.400.body"/>
+            <spring:message code="authorized.user.description"/>
             <br>
-            <br>
-            <form:form method="post" action="/billing">
-                <button formaction="/billing" type="submit" class="btn btn-info">
-                    <spring:message code="error.button.caption"/>
-                </button>
-            </form:form>
+            <img class="center-block img-responsive" src="/resources/png/billing.png">
         </div>
     </div>
 </div>
