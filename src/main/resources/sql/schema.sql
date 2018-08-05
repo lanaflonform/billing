@@ -38,4 +38,3 @@ CREATE TABLE IF NOT EXISTS user_roles (
 
   UNIQUE (user_id, role_id)
 );
-
