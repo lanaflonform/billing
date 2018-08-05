@@ -35,6 +35,10 @@ public class UserDao implements UserRepository {
     @Override
     @Transactional(value = "transactionManagerHibernate")
     public void edit(User user) {
+        @Cleanup Session session = sessionFactory.openSession();
+        session.update(user);
+        session.flush();
+        logger.info("User successfully updated. User: " + user);
     }
 
     @Override
