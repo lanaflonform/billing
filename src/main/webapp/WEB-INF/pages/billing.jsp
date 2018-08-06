@@ -6,45 +6,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Java EE, Spring (MVC, Security, JPA), Hibernate">
-
-    <meta property="og:title" content="Billing">
-    <meta property="og:site_name" content="Billing">
-    <meta property="og:url" content="http://billing.com">
-    <meta property="og:description" content="Billing System">
-    <meta property="og:image" content="http://vakhnenko.com/java.png">
-
     <title>Billing</title>
-
-    <!-- Bootstrap core CSS -->
-    <spring:url value="/resources/css/bootstrap.css" var="bootstrap"/>
-    <link href="${bootstrap}" rel="stylesheet"/>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/resources/ico/favicon.ico">
+    <%@ include file="include-meta.jsp" %>
+    <%@ include file="include-bootstrap.jsp" %>
 </head>
 
 <body>
 <div class="container">
-    <h1>Billing</h1>
+    <form:form method="get" action="/login">
+        <jsp:include page="header.jsp"/>
+    </form:form>
+
     <div class="panel panel-info">
-        <div class="panel-heading">Billing</div>
+        <div class="panel-heading">
+            <spring:message code="billing.header"/>
+        </div>
         <div class="panel-body">
-            Billing
+            <spring:message code="billing.description"/>
             <br>
-            <br>
-            <form:form method="post" action="/billing">
-                <button formaction="/billing" type="submit" class="btn btn-info">Billing</button>
-            </form:form>
+            <img class="center-block img-responsive" src="/resources/png/under_construction.png">
         </div>
     </div>
 </div>

@@ -6,20 +6,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>400</title>
+    <title>405</title>
     <%@ include file="include-meta.jsp" %>
     <%@ include file="include-bootstrap.jsp" %>
 </head>
-
 <body>
 <div class="container">
-    <h1><spring:message code="error.message.400.header"/></h1>
+    <h1><spring:message code="error.message.405.header"/></h1>
     <div class="panel panel-danger">
         <div class="panel-heading">
-            <spring:message code="error.message.400.caption"/>
+            <spring:message code="error.message.405.caption"/>
         </div>
         <div class="panel-body">
-            <spring:message code="error.message.400.body"/>
+            <spring:message code="error.message.405.body"/>
             <br>
             <br>
             <form:form method="post" action="/billing">

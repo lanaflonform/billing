@@ -38,22 +38,21 @@ public class UserDao implements UserRepository {
         @Cleanup Session session = sessionFactory.openSession();
         session.update(user);
         session.flush();
-        logger.info("User successfully updated. User: " + user);
+        logger.info("User successfully updated. User id: " + user.getId());
     }
 
     @Override
     @Transactional(value = "transactionManagerHibernate")
     public User getUserById(int id) {
         @Cleanup Session session = this.sessionFactory.openSession();
-        User user = (User) session.get(User.class, new Integer(id));
-        return user;
+        return (User) session.get(User.class, id);
     }
 
     @Override
+    @SuppressWarnings({"unchecked", "JpaQlInspection"})
     @Transactional(value = "transactionManagerHibernate")
     public List<User> list() {
         @Cleanup Session session = this.sessionFactory.openSession();
-        List<User> result = session.createQuery("from User order by id").list();
-        return result;
+        return session.createQuery("from User order by id").list();
     }
 }
