@@ -15,8 +15,8 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import javax.sql.DataSource;
 import java.util.Properties;
+import javax.sql.DataSource;
 
 /**
  * Hibernate configuration.
@@ -63,12 +63,12 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.dialect", env.getProperty("jdbc.dialect"));
         properties.setProperty("hibernate.globally_quoted_identifiers", "true");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.connection.characterEncoding", "utf8");
         properties.setProperty("hibernate.connection.CharSet", "utf8");
+        //properties.setProperty("hibernate.hbm2ddl.auto", "update");
         //properties.setProperty("hibernate.cache.use_second_level_cache", "true);
         //properties.setProperty("hibernate.connection.autocommit", "true");
         return properties;
