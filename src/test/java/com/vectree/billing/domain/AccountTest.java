@@ -1,12 +1,16 @@
 package com.vectree.billing.domain;
 
 import org.junit.Test;
+
 import java.math.BigDecimal;
+
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertThat;
 
 /**
  * Account unit test check that all works fine.
+ *
  * @author Egor Voronyansky
  * @version 0.1
  */
@@ -40,5 +44,13 @@ public class AccountTest {
     @Test
     public void getCredit() {
         assertThat(account.getCredit(), is(new BigDecimal(100)));
+    }
+
+    /**
+     * Test toString() is not null
+     */
+    @Test
+    public void testToString() {
+        assertThat(account.toString(), instanceOf(String.class));
     }
 }

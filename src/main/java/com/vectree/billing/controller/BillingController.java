@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * class BillingController Spring MVC.
  *
- * @version 1.0
+ * @version 0.1
  */
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class BillingController {
     private static final Logger LOGGER = LoggerFactory.getLogger(BillingController.class);
 
