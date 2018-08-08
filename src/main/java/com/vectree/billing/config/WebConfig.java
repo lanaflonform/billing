@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 /**
  * class WebConfig WebMvcConfigurerAdapter Spring MVC.
  *
- * @version 1.0
+ * @version 0.1
  */
 @Configuration
 @EnableWebMvc

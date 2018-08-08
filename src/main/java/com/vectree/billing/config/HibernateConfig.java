@@ -21,9 +21,10 @@ import javax.sql.DataSource;
 /**
  * Hibernate configuration.
  *
- * @version 1.0
+ * @version 0.1
  */
 @Configuration
+@SuppressWarnings("unused")
 @EnableTransactionManagement
 @ComponentScan("com.vectree.billing.domain")
 @PropertySource("/WEB-INF/properties/database.properties")
@@ -54,8 +55,8 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
     }
 
     @Autowired
-    @Bean(name = "transactionManagerHibernate")
-    public HibernateTransactionManager transactionManagerHibernate(SessionFactory sessionFactory) {
+    @Bean(name = "transactionManager")
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
         return txManager;

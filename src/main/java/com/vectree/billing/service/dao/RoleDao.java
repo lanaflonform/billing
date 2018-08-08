@@ -1,7 +1,7 @@
 package com.vectree.billing.service.dao;
 
-import com.vectree.billing.domain.User;
-import com.vectree.billing.service.interfaces.UserRepository;
+import com.vectree.billing.domain.Role;
+import com.vectree.billing.service.interfaces.RoleRepository;
 import lombok.Cleanup;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,60 +14,60 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * DAO class for User.
+ * DAO class for Role.
  *
  * @version 0.1.
  */
-@Repository("userDao")
-public class UserDao implements UserRepository {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserDao.class);
+@Repository("roleDao")
+public class RoleDao implements RoleRepository {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoleDao.class);
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void add(User user) {
+    public void add(Role role) {
         @Cleanup Session session = sessionFactory.openSession();
-        session.persist(user);
+        session.persist(role);
         session.flush();
-        LOGGER.info("User successfully saved. User: " + user);
+        LOGGER.info("Role successfully saved. Role: " + role);
     }
 
     @Override
-    public void edit(User user) {
+    public void edit(Role role) {
         @Cleanup Session session = sessionFactory.openSession();
-        session.update(user);
+        session.update(role);
         session.flush();
-        LOGGER.info("User successfully updated. User: " + user);
+        LOGGER.info("Role successfully updated. Role: " + role);
     }
 
     @Override
     public void delete(int id) {
         @Cleanup Session session = sessionFactory.openSession();
-        User user = (User) session.get(User.class, id);
-        session.delete(user);
+        Role role = (Role) session.get(Role.class, id);
+        session.delete(role);
         session.flush();
-        LOGGER.info("User successfully deleted. User: " + user);
+        LOGGER.info("Role successfully deleted. Role: " + role);
     }
 
     @Override
-    public User getById(int id) {
+    public Role getById(int id) {
         @Cleanup Session session = this.sessionFactory.openSession();
-        return (User) session.get(User.class, id);
+        return (Role) session.get(Role.class, id);
     }
 
     @Override
-    public User getByName(String name) {
+    public Role getByName(String name) {
         @Cleanup Session session = this.sessionFactory.openSession();
-        Query query = session.createQuery("from User where username=:name");
+        Query query = session.createQuery("from Role where name=:name");
         query.setParameter("name", name);
-        return (User) query.uniqueResult();
+        return (Role) query.uniqueResult();
     }
 
     @Override
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
-    public List<User> list() {
+    public List<Role> list() {
         @Cleanup Session session = this.sessionFactory.openSession();
-        return session.createQuery("from User order by id").list();
+        return session.createQuery("from Role order by id").list();
     }
 }

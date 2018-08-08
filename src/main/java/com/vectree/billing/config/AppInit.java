@@ -12,7 +12,7 @@ import javax.servlet.ServletRegistration;
 /**
  * class AppInit WebApplicationInitializer Spring MVC.
  *
- * @version 1.0
+ * @version 0.1
  */
 public class AppInit implements WebApplicationInitializer {
 
