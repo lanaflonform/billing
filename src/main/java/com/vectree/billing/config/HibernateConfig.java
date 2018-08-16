@@ -3,19 +3,19 @@ package com.vectree.billing.config;
 import com.vectree.billing.domain.Account;
 import com.vectree.billing.domain.User;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.flywaydb.core.Flyway;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Properties;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 /**
@@ -61,6 +61,25 @@ public class HibernateConfig extends WebMvcConfigurerAdapter {
         txManager.setSessionFactory(sessionFactory);
         return txManager;
     }
+
+    @Bean(initMethod = "migrate")
+    protected Flyway flyway() {
+        Flyway flyway = new Flyway();
+        flyway.setValidateOnMigrate(true);
+        flyway.setLocations("classpath:db/migration");
+        flyway.setDataSource(dataSourceHibernate());
+        return flyway;
+    }
+
+    @Bean @DependsOn("flyway")
+    protected EntityManagerFactory entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
+        bean.setDataSource(dataSourceHibernate());
+        return bean.getObject();
+    }
+
+
+
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
