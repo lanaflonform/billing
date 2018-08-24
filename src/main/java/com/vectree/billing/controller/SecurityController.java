@@ -87,11 +87,6 @@ public class SecurityController {
         return "redirect:/billing";
     }
 
-    @RequestMapping(value = "/billing/authorized/user", method = RequestMethod.GET)
-    public String loggedUser() {
-        return "authorized-user";
-    }
-
     @RequestMapping(value = "/billing/authorized/admin", method = RequestMethod.GET)
     public String loggedAdmin() {
         return "authorized-admin";

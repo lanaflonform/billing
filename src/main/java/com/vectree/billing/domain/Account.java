@@ -1,8 +1,8 @@
 package com.vectree.billing.domain;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 
 /**
  * Account implementation.
@@ -22,7 +21,6 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "accounts")
-@RequiredArgsConstructor
 public class Account {
 
     /**
@@ -31,19 +29,19 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "billingSequence")
     @SequenceGenerator(sequenceName = "billing_sequence", allocationSize = 1, name = "billingSequence")
-    private final int id;
+    private int id;
 
     /**
      * Debit account.
      */
     @Column(name = "debit")
-    private final BigDecimal debit;
+    private BigDecimal debit;
 
     /**
      * Credit account.
      */
     @Column(name = "credit")
-    private final BigDecimal credit;
+    private BigDecimal credit;
 
     /**
      * User assigned to account.
@@ -55,6 +53,12 @@ public class Account {
         this.id = 0;
         this.debit = new BigDecimal("0.0");
         this.credit = new BigDecimal("0.0");
+    }
+
+    public Account(int id, BigDecimal debit, BigDecimal credit) {
+        this.id = id;
+        this.debit = debit;
+        this.credit = credit;
     }
 
     @Override
