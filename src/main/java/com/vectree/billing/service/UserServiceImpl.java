@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService {
         Account account = new Account(0, new BigDecimal("0.0"), new BigDecimal("0.0"));
         account.setUser(user);
         user.setAccount(account);
-        user.setEmail("");
 
         userDao.add(user);
     }
