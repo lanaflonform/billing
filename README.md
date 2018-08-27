@@ -1,5 +1,21 @@
 [![Build Status](https://travis-ci.org/we-are-comrades/billing.svg?branch=master)](https://travis-ci.org/we-are-comrades/billing)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e4262d0680044f208141fdced3d38f59)](https://www.codacy.com/project/vrnsky/billing/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=we-are-comrades/billing&amp;utm_campaign=Badge_Grade_Dashboard) [![codecov](https://codecov.io/gh/we-are-comrades/billing/branch/master/graph/badge.svg)](https://codecov.io/gh/we-are-comrades/billing)
 
+## Локальное развертывание приложения:
+1. Java 8
+2. Maven
+3. PostgreSQL
+
+Для того, чтобы запустить приложение необходимо выполнить следующее:
+В файле database.properties выставить значения, которые актуальны на вашей локальной машине.
+```
+jdbc.url=jdbc:postgresql://localhost:5432/billing
+jdbc.username=postgres
+jdbc.password=55555
+```
+
+После этого можно запустить приложение командой ```mvn jetty:run```
+
+
 # Биллинговая система
 
 Кратко разберем, что же такое биллинговая система, какие ее задачи и основные понятия.
@@ -49,3 +65,4 @@
 * JUnit
 * Mockito
 * PostgresSQL
+
