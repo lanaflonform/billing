@@ -5,12 +5,11 @@ import com.vectree.billing.domain.Role;
 import com.vectree.billing.domain.User;
 import com.vectree.billing.service.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,7 +32,6 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    @Transactional(value = "transactionManager")
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Set<User> users = new HashSet<>();
@@ -48,41 +46,31 @@ public class UserServiceImpl implements UserService {
         roles.add(role);
         user.setRoles(roles);
 
-        Account account = new Account(0, new BigDecimal("0.0"), new BigDecimal("0.0"));
+        Account account = new Account(0L, new BigDecimal("0.0"), new BigDecimal("0.0"));
         account.setUser(user);
         user.setAccount(account);
 
-        userDao.add(user);
+        userDao.save(user);
     }
 
     @Override
-    @Transactional(value = "transactionManager")
-    public void delete(int id) {
-        userDao.delete(id);
+    public void delete(Long id) {
+        User user = userDao.getOne(id);
+        userDao.delete(user);
     }
 
     @Override
-    @Transactional(value = "transactionManager")
-    public User getOne(int id) {
-        return userDao.getById(id);
+    public User getOne(Long id) {
+        return userDao.findOne(id);
     }
 
     @Override
-    @Transactional(value = "transactionManager")
     public User findByUsername(String username) {
-        return userDao.getByName(username);
+        return userDao.findByUsername(username);
     }
 
     @Override
-    @Transactional(value = "transactionManager")
     public List<User> getAll() {
-        List<User> users = userDao.list();
-        users.sort(new Comparator<User>() {
-            @Override
-            public int compare(User o1, User o2) {
-                return o1.getUsername().compareToIgnoreCase(o2.getUsername());
-            }
-        });
-        return users;
+        return userDao.findAll(new Sort(Sort.Direction.ASC, "username"));
     }
 }

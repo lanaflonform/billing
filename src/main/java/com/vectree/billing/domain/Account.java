@@ -29,7 +29,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "billingSequence")
     @SequenceGenerator(sequenceName = "billing_sequence", allocationSize = 1, name = "billingSequence")
-    private int id;
+    private Long id;
 
     /**
      * Debit account.
@@ -50,12 +50,12 @@ public class Account {
     private User user;
 
     public Account() {
-        this.id = 0;
+        this.id = 0L;
         this.debit = new BigDecimal("0.0");
         this.credit = new BigDecimal("0.0");
     }
 
-    public Account(int id, BigDecimal debit, BigDecimal credit) {
+    public Account(Long id, BigDecimal debit, BigDecimal credit) {
         this.id = id;
         this.debit = debit;
         this.credit = credit;
@@ -71,22 +71,18 @@ public class Account {
         }
 
         Account account = (Account) obj;
-        return id == account.getId()
+        return id.equals(account.getId())
                 && debit.equals(account.getDebit())
                 && credit.equals(account.getCredit());
     }
 
     @Override
     public int hashCode() {
-        return id + debit.hashCode() + credit.hashCode();
+        return id.intValue() + debit.hashCode() + credit.hashCode();
     }
 
     @Override
     public String toString() {
-        return "Account {" +
-                "id=" + id +
-                ", debit=" + debit +
-                ", credit=" + credit +
-                '}';
+        return String.format("Account {id=%d debit=%.2f credit=%.2f}", id, debit, credit);
     }
 }

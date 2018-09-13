@@ -2,6 +2,8 @@ package com.vectree.billing.domain;
 
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +18,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * User of the system.
@@ -29,7 +28,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
-public class User implements Serializable {
+public class User {
 
     /**
      * Unique per user number.
@@ -37,7 +36,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "billingSequence")
     @SequenceGenerator(sequenceName = "billing_sequence", allocationSize = 1, name = "billingSequence")
-    private int id;
+    private Long id;
 
     /**
      * Name of the user.
@@ -79,7 +78,7 @@ public class User implements Serializable {
     private Set<Role> roles;
 
     public User() {
-        this.id = 0;
+        this.id = 0L;
         this.username = "";
         this.email = "";
         this.password = "";
@@ -97,7 +96,7 @@ public class User implements Serializable {
         }
 
         User user = (User) obj;
-        return id == user.getId()
+        return id.equals(user.getId())
                 && username.equals(user.getUsername())
                 && email.equals(user.getEmail())
                 && password.equals(user.getPassword());
@@ -105,23 +104,21 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        return id + username.hashCode() + email.hashCode() + password.hashCode();
+        return id.intValue() + username.hashCode() + email.hashCode() + password.hashCode();
     }
 
     @Override
     public String toString() {
-        String result = "User {" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                ", account=" + account.getId() +
-                ", roles={ ";
+        String resultRoles = "";
         for (Role role : roles) {
-            result += role + " ";
+            resultRoles += role + " ";
         }
-        result += "}}";
+        if (resultRoles.length() > 1) {
+            resultRoles = resultRoles.substring(0, resultRoles.length() - 1);
+        }
+
+        String result = String.format("User {id=%d username=\"%s\" email=\"%s\" password=\"%s\" confirmPassword=\"%s\"" +
+                " Account {id=%d} roles {%s}}", id, username, email, password, confirmPassword, account.getId(), resultRoles);
         return result;
     }
 }

@@ -6,9 +6,9 @@ package com.vectree.billing.utils;
  * @version 0.1
  */
 public class Constants {
-    public static final int ROLE_GUEST = 0;
-    public static final int ROLE_USER = 1;
-    public static final int ROLE_ADMIN = 2;
+    public static final Long ROLE_GUEST = 0L;
+    public static final Long ROLE_USER = 1L;
+    public static final Long ROLE_ADMIN = 2L;
 
     public static final String ROLE_GUEST_NAME = "ROLE_GUEST";
     public static final String ROLE_USER_NAME = "ROLE_USER";

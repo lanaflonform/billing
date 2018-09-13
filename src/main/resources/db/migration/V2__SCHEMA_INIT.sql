@@ -1,4 +1,4 @@
--- Sequence --
+-- Sequence
 CREATE SEQUENCE IF NOT EXISTS billing_sequence
 MINVALUE 3
 MAXVALUE 9999999999

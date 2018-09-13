@@ -2,6 +2,7 @@ package com.vectree.billing.domain;
 
 import lombok.Data;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Roles of User.
@@ -22,7 +21,7 @@ import java.util.Set;
 @Entity
 @Table(name = "roles")
 @Data
-public class Role implements Serializable {
+public class Role {
 
     /**
      * Unique per role number.
@@ -30,7 +29,7 @@ public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "billingSequence")
     @SequenceGenerator(sequenceName = "billing_sequence", allocationSize = 1, name = "billingSequence")
-    private int id;
+    private Long id;
 
     /**
      * Name of the role.
@@ -58,20 +57,17 @@ public class Role implements Serializable {
         }
 
         Role role = (Role) obj;
-        return id == role.getId()
+        return id.equals(role.getId())
                 && name.equals(role.getName());
     }
 
     @Override
     public int hashCode() {
-        return id + name.hashCode();
+        return id.intValue() + name.hashCode();
     }
 
     @Override
     public String toString() {
-        String result = "Role {" +
-                "id=" + id +
-                ", name='" + name + "}";
-        return result;
+        return String.format("Role {id=%d name=\"%s\"}", id, name);
     }
 }
