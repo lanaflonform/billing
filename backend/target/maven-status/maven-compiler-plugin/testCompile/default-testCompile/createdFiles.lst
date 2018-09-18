@@ -1,0 +1,3 @@
+com\vectree\controller\UserControllerTest.class
+com\vectree\service\UserServiceTest.class
+com\vectree\service\TransactionServiceTest.class

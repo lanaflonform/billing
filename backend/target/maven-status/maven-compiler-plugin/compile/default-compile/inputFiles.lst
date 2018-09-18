@@ -1,0 +1,12 @@
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\service\TransactionService.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\domain\User.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\SpringBootApp.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\domain\Transaction.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\domain\TransactionStatus.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\repository\interfaces\TransactionRepository.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\controller\TransactionController.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\domain\Wallet.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\controller\UserController.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\domain\Role.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\service\UserService.java
+D:\repos\we-are-comrades\billing\backend\src\main\java\com\vectree\repository\interfaces\UserRepository.java
