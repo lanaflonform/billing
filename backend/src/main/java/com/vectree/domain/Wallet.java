@@ -23,7 +23,11 @@ public class Wallet {
     private BigDecimal credit;
 
     public Wallet(Long id, BigDecimal debit, BigDecimal credit) {
+        this(debit, credit);
         this.id = id;
+    }
+
+    public Wallet(BigDecimal debit, BigDecimal credit) {
         this.debit = debit;
         this.credit = credit;
     }

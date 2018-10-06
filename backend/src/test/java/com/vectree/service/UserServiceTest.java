@@ -1,7 +1,9 @@
 package com.vectree.service;
 
 import com.vectree.domain.User;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +18,8 @@ public class UserServiceTest {
 
     @Autowired
     private UserService userService;
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test(expected = IllegalArgumentException.class)
     public void whenTryNotExistUserShouldCheckThatServiceThrowException() {
@@ -44,8 +48,11 @@ public class UserServiceTest {
         assertThat(user.getEmail(), is("2@gmail.com"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void whenTryRemoveUserShouldCheckThatWasRemoved() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("User with given id not exists!");
+
         User user = new User();
         user.setEmail("1@mail.ru");
         user.setPassword("password");

@@ -46,7 +46,7 @@ public class TransactionService {
         Wallet to = recipient.getWallet();
 
         BigDecimal amount = transaction.getAmount();
-        if (amount.compareTo(from.getDebit()) > 0) {
+        if (amount.compareTo(from.getDebit()) >= 0) {
             transaction.setStatus(TransactionStatus.FAIL);
             throw new IllegalArgumentException("Transaction could not perform because is not enough money on debit at the donor wallet");
         }
@@ -56,6 +56,7 @@ public class TransactionService {
         to.setDebit(to.getDebit().add(amount));
 
         transaction.setStatus(TransactionStatus.SUCCESS);
-
     }
+
+
 }

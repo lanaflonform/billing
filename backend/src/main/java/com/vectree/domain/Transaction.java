@@ -36,7 +36,6 @@ public class Transaction {
 
 
     public Transaction(User donor, User recipient, BigDecimal amount) {
-        this.id = -1L;
         this.donor = donor;
         this.recipient = recipient;
         this.amount = amount;
