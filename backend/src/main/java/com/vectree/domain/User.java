@@ -18,11 +18,11 @@ public class User {
     private String email;
     private String password;
 
-    @OneToOne(targetEntity = Wallet.class)
+    @OneToOne(targetEntity = Wallet.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 
-    @OneToMany(targetEntity = Role.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Role.class, fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Role> roles;
 
     public User(String email, String password, Wallet wallet, Set<Role> roles) {
